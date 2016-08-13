@@ -27,6 +27,16 @@ $icon-font-path: "../../bootstrap-sass/assets/fonts/bootstrap/";
   }
 }
 
+tr.ng-scope {
+	cursor: pointer;
+}
+
+.done-true {
+	color: red;
+	text-decoration: line-through;
+}
+
+
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically

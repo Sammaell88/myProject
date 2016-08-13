@@ -1,0 +1,34 @@
+<div class="col-xs-6" ng-controller="TodoTasksController as todots_ctrl">
+  <h2>Задачи</h2>
+
+<form class="form-inline" ng-submit="todots_ctrl.addTask()">
+  <div class="form-group">
+    <label class="sr-only"></label>
+    <input type="text" class="form-control" placeholder="Задача" ng-model="todots_ctrl.newTask.name">
+  </div>
+  <button type="submit" class="btn btn-default">Добавить</button>
+</form>
+
+
+  <br>
+  <table class="table table-striped table-hover" ng-show="todots_ctrl.tasks.length">
+    <thead>
+      <tr>
+        <th>Задача</th>
+        <th>Дата</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="task in todots_ctrl.tasks" ng-click="todots_ctrl.switchMarker(task)" class="{{task.marker}}">
+      
+        <td>{{task.name}}</td>
+        <td>{{task.date}}</td>     
+             
+      </tr>
+    </tbody>   
+  </table>
+    <button class="btn btn-default" ng-show="todots_ctrl.tasks.length" ng-click="todots_ctrl.removeDoneTasks()">Очистить завершённые</button>
+  <button class="btn btn-default" ng-show="todots_ctrl.tasks.length" ng-click="todots_ctrl.resetTasks()">Очистить всё</button>
+  
+  
+</div>

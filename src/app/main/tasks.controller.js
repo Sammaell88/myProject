@@ -1,15 +1,33 @@
-angular.module("mytodo").controller('TodoTasksController', function($scope) {
+angular.module("mytodo").controller('TodoTasksController', function($scope,TasksStore,$document) {
 
   var vm = this;
-  vm.tasks = [];
+  vm.tasks = TasksStore.tasks;
 
-  var now = new Date();
+  
+
+  function getCurDate () {
+
+    var now = new Date();
+
+    var dd = now.getDate();
+  if (dd < 10) dd = '0' + dd;
+
+  var mm = now.getMonth() + 1;
+  if (mm < 10) mm = '0' + mm;
+
+  var yy = now.getFullYear() % 100;
+  if (yy < 10) yy = '0' + yy;
+
+  return dd + '.' + mm + '.' + yy;
+
+  };
+
 
    vm.resetTask = function() {
     vm.newTask = {
       name: "",
-      date: now.getDay() + "." + now.getMonth() + "." + now.getFullYear(),
-      description: ""
+      date: getCurDate(),
+      marker: "done-false"
     }
   }
   vm.resetTask();
@@ -17,6 +35,28 @@ angular.module("mytodo").controller('TodoTasksController', function($scope) {
   vm.addTask = function() {
   vm.tasks.push(vm.newTask);
   vm.resetTask();
+
 }
+
+vm.resetTasks = function() {
+  vm.tasks.splice(0,vm.tasks.length);
+};
+
+vm.switchMarker = function(task) {
+  if (task.marker === "done-false") {
+    task.marker = "done-true";
+  } else {
+    task.marker = "done-false";
+  };  
+};
+
+
+vm.removeDoneTasks = function() {
+    for (var i = 0; i < vm.tasks.length; i++) {
+      if (vm.tasks[i].marker === "done-true") {
+         vm.tasks.splice(i,1); 
+      };
+    };
+  };
 
 });
