@@ -19,7 +19,7 @@ angular.module("mytodo").controller('TodoTasksController', function($scope,Tasks
   if (yy < 10) yy = '0' + yy;
 
   return dd + '.' + mm + '.' + yy;
-  };
+  }
   
    vm.resetTask = function() {
     vm.newTask = {
@@ -45,7 +45,7 @@ vm.switchMarker = function(task) {
     task.marker = "done-true";
   } else {
     task.marker = "done-false";
-  };  
+  } 
 };
 
 vm.removeDoneTasks = function() {
@@ -54,8 +54,7 @@ angular.forEach(vm.tasks,function(item, i){
 if (vm.tasks[i].marker == "done-true") {
          vm.tasks.splice(i,1);
          vm.removeDoneTasks();
-      };
-
+      }
 
 });
 

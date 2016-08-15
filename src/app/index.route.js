@@ -8,11 +8,19 @@
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('home', {
-        url: '/',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainController',
-        controllerAs: 'main'
+      .state('todolist', {
+        url: '/todolist',
+        templateUrl: 'app/main/todolist.html',
+        controller: 'TodoTasksController',
+        controllerAs: 'todots_ctrl'
+      })
+      .state('task2', {
+        url: '/task2',
+        templateUrl: 'app/main/task2.html'
+      })
+      .state('task3', {
+        url: '/task3',
+        templateUrl: 'app/main/task3.html'
       });
 
     $urlRouterProvider.otherwise('/');
