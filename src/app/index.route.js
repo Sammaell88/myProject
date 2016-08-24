@@ -14,9 +14,9 @@
         controller: 'TodoTasksController',
         controllerAs: 'todots_ctrl'
       })
-      .state('task2', {
-        url: '/task2',
-        templateUrl: 'app/main/task2.html'
+      .state('twitter_search', {
+        url: '/twitter_search',
+        templateUrl: 'app/main/twitter_search.html'
       })
       .state('task3', {
         url: '/task3',

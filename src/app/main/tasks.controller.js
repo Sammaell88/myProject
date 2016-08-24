@@ -1,4 +1,4 @@
-angular.module("mytodo").controller('TodoTasksController', function($scope,TasksStore) {
+angular.module("mytodo").controller('TodoTasksController', function(TasksStore) {
 
   var vm = this;
   vm.tasks = TasksStore.tasks;
@@ -57,10 +57,6 @@ if (vm.tasks[i].marker == "done-true") {
       }
 
 });
-
-
-
-
 
   };
 });
