@@ -1,27 +1,62 @@
 
 
-<div class="col-xs-10" ng-controller="TwitterSearchController as twsearch_ctrl">	
+<div class="col-xs-12" ng-controller="TwitterSearchController as twsearch_ctrl">	
 <h2>Twitter search</h2>
 
 
 
-<form class="form-inline">
+<form class="form-inline" ng-submit="twsearch_ctrl.makeRequest()">
   <div class="form-group">
     <label class="sr-only" for="inputSearchQuery">SearchQuery</label>
-    <input type="text" class="form-control" id="inputSearchQuery" placeholder="Enter Twitter user name">
+    <input type="text" class="form-control" id="inputSearchQuery" placeholder="Enter Twitter user name" ng-model="twsearch_ctrl.newQuery">   
+    <select class="form-control" id="searchedTweetsNumber" ng-model="twsearch_ctrl.newQueryNumber">
+  <option>10</option>
+  <option>20</option>
+  <option>30</option>
+  <option>40</option>
+  <option>50</option>
+  <option>60</option>
+  <option>70</option>
+  <option>80</option>
+  <option>90</option>
+  <option>100</option>
+  <option>110</option>
+  <option>120</option>
+  <option>130</option>
+  <option>140</option>
+  <option>150</option>
+  <option>160</option>
+  <option>170</option>
+  <option>180</option>
+  <option>190</option>
+  <option>200</option>
+</select>
+<label for="searchedTweetsNumber">Number of tweets</label>
   </div>
-  <button type="submit" class="btn btn-default" ng-click="twsearch_ctrl.makeRequest">Search</button>
+  <button type="submit" class="btn btn-default">Search</button>
 </form>
 <br>
 
-<div class="panel panel-default col-xs-6">
-  <div class="panel-body">
-    Basic panel example
-  </div>
-</div>
+<ul class="list-group row" ng-show="twsearch_ctrl.tweets.length">
+  <li class="list-group-item" ng-repeat="t in twsearch_ctrl.tweets | start: (currentPage - 1) * pageSize | limitTo: pageSize">
+       <img ng-src="{{t.user.profile_image_url}}" class="img-rounded">  
+          <strong>{{t.user.name}}</strong>
+          <small>{{t.user.created_at}}</small>
+          <br> <span ng-bind-html="t.text"></span>         
+  </li> 
+  <ul uib-pagination total-items="twsearch_ctrl.tweets.length" ng-model="currentPage" max-size="5" class="pagination-sm" boundary-link-numbers="true" rotate="false"></ul>
 
+<form class="form-inline">
+<select class="form-control" id="itemsPerPage" ng-model="pageSize">
+  <option>5</option>
+  <option>10</option>
+  <option>15</option>
+  <option>20</option>
+</select>
+<label for="itemsPerPage">Items per page</label>
+</form>
 
-
+</ul>
 
 </div>
 
