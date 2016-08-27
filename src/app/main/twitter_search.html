@@ -44,7 +44,7 @@
           <small>{{t.user.created_at}}</small>
           <br> <span ng-bind-html="t.text"></span>         
   </li> 
-  <ul uib-pagination total-items="twsearch_ctrl.tweets.length" ng-model="currentPage" max-size="5" class="pagination-sm" boundary-link-numbers="true" rotate="false"></ul>
+  <ul uib-pagination total-items="twsearch_ctrl.tweets.length" ng-model="currentPage" class="pagination-sm" boundary-link-numbers="true" rotate="false" items-per-page="pageSize"></ul>
 
 <form class="form-inline">
 <select class="form-control" id="itemsPerPage" ng-model="pageSize">

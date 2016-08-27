@@ -33,9 +33,11 @@ OAuth.popup('twitter').then(function(twitter) {
 
 };
 
-$scope.currentPage = 1; // keeps track of the current page
+$scope.currentPage = 1; 
 
-$scope.pageSize = 5; // holds the number of items per page
+$scope.pageSize = 5; 
+
+$scope.numPages = $scope.totalItems / $scope.pageSize;
 
 }).filter('start', function () {
         return function (input, start) {
